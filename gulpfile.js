@@ -126,8 +126,10 @@ gulp.task('serve:dist', ['build'], function () {
  * 发布到github pages
  */
 gulp.task('publish', ['build'], function () {
-  return gulp.src('./dist/**/*')
-    .pipe($.ghPages());
+  return gulp.src([
+    './dist/**/*',
+    'app/CNAME'
+  ]).pipe($.ghPages());
 });
 
 //默认开发
