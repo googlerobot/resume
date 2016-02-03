@@ -38,6 +38,7 @@ gulp.task('html', function () {
     .pipe(nunjucksRender().on('error', function (e) {
       console.log(e)
     }))
+    .pipe($.replace('<link rel="stylesheet" href="static/css/responsive.css"/>', ''))
     .pipe($.replace('static/css/base.css', 'static/css/base.min.css'))
     .pipe($.minifyHtml())
     .pipe(gulp.dest('dist/'))
@@ -49,17 +50,6 @@ gulp.task('fonts', function () {
   return gulp.src(['app/static/fonts/**'])
     .pipe(gulp.dest('dist/static/fonts'))
     .pipe($.size({title: 'fonts'}));
-});
-
-gulp.task('pdf', function () {
-  //return gulp
-  //  .src('dist/index.html')
-  //  .pipe($.htmlPdf())
-  //  .pipe(gulp.dest('dist/'))
-  //  .pipe($.size({title: 'pdf'}));
-  return gulp.src(['app/*.pdf'])
-    .pipe(gulp.dest('dist/'))
-    .pipe($.size({title: 'pdf'}));
 });
 
 // Optimize images
@@ -82,6 +72,7 @@ gulp.task('less', function () {
     .pipe($.size({title: 'less'}));
 });
 
+//编译并压缩css
 gulp.task('less-min', function () {
   del(['dist/static/css/*.css'], {dot: true});
   return gulp.src([
@@ -114,20 +105,29 @@ gulp.task('serve', ['clean', 'html', 'less'], function () {
   gulp.watch(['app/images/**/*'], reload);
 });
 
-// 仅发布代码.
-gulp.task('publish', ['fonts', 'images', 'less-min', 'html'], function () {
-  return gulp.src('./dist/**/*')
-    .pipe($.ghPages());
-});
+
+/**
+ * 构建
+ */
+gulp.task('build',['fonts', 'images', 'less-min', 'html']);
 
 /**
  * 发布预览
  */
-gulp.task('serve:dist', ['publish'], function () {
+gulp.task('serve:dist', ['build'], function () {
   browserSync.init({
     notify: false,
     server: 'dist'
   });
+});
+
+
+/**
+ * 发布到github pages
+ */
+gulp.task('publish', ['build'], function () {
+  return gulp.src('./dist/**/*')
+    .pipe($.ghPages());
 });
 
 //默认开发
