@@ -1,0 +1,85 @@
+.clearfix{
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+
+.inline-block(){
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+
+
+
+//@see http://www.queness.com/post/13901/create-beautiful-hexagon-shapes-with-pure-css3
+.hexagon {
+  position: relative;
+  width: 135px;
+  height: 77.94px;
+  margin: 38.97px 0;
+  background-size: auto 155.8846px;
+  background-position: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 95.46px;
+  height: 95.46px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 19.77px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 135.0000px;
+  height: 77.94228634059948px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-38.9711px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-38.9711px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-38.9711px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -47.7297px;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -47.7297px;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 0.0000px;
+  left: 0;
+  width: 135.0000px;
+  height: 77.9423px;
+  z-index: 2;
+  background: inherit;
+}

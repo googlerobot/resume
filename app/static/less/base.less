@@ -1,0 +1,385 @@
+@import "normalize.less";
+@import "mixins.less";
+@import "iconfont.less";
+
+@backgroundColor: #fff;
+@mainColor: #4ecdc4;
+@darkColor: #292f36;
+@linkColor: #ff6b6b;
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #fff;
+  background-color: @mainColor;
+}
+
+html {
+  font-family: sans-serif;
+  //overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: '微软雅黑', 'Microsoft Yahei', 'Arail', sans-serif;
+  font-size: 0.875em;
+  line-height: 1.5;
+  background-color: lighten(#eee, 5%);
+  color: @darkColor;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: border-color .2s linear;
+  -moz-transition: border-color .2s linear;
+  -o-transition: border-color .2s linear;
+  transition: border-color .2s linear;
+  color: @linkColor;
+  &:hover, &:focus {
+    color: darken(@linkColor, 20%);
+  }
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+.content {
+
+}
+
+.section {
+  .section-hd {
+    //border-left:3px solid #333;
+    border-bottom: 1px solid #eee;
+    h4 {
+      font-size: 1.2em;
+      margin: 0;
+      //padding-left: 10px;
+      i {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .section-bd {
+    padding: 0.5em 0;
+
+    h5{
+      margin:.5em 0 .5em 0;
+    }
+    p{
+      margin:0;
+    }
+    ol{
+      margin:0;
+      padding:0 0 0 1.6em;
+    }
+  }
+}
+
+//时间线
+.timeline {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  //padding:0 0 0 20px;
+  &:before, &:after {
+    position: absolute;
+    bottom: 1em;
+    display: block;
+    content: "";
+    background-color: #cad3df;
+  }
+
+  &:before {
+    left: 8px;
+    top: 2px;
+    width: 2px;
+  }
+
+  .timeline-entry {
+    position: relative;
+
+    .timeline-stat {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #fff;
+
+      display: block;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #e7ebee;
+      margin: 0 auto;
+      height: 8px;
+      width: 8px;
+      text-align: center;
+    }
+
+    .timeline-hd {
+      margin-bottom: 0.5em;
+      span {
+        //.inline-block();
+        font-size: 0.8em;
+        width: 150px;
+      }
+
+      .job {
+        margin-right: 4em;
+      }
+      .summary{
+        margin-left:2em;
+      }
+    }
+    .timeline-content {
+      padding: 0 0 0 3em;
+    }
+    .timeline-bd {
+      //text-indent: 2em;
+      ul{
+        list-style: none;
+        margin:0;
+        //padding:0 0 0 20px;
+        padding:0;
+      }
+      li{
+        position:relative;
+        padding: 0 0 6px 110px;
+        //padding: 0;
+      }
+      .date{
+        display: inline-block;
+        //display: none;
+        position:absolute;
+        top:0;
+        left:0;
+        width:110px;
+      }
+    }
+  }
+}
+
+//copy from bootstrap.
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background-color: #777;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.hide {
+  display: none;
+}
+
+/** 按钮样式 **/
+.btn {
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.important {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+/***/
+
+.main {
+  margin: 0 auto;
+  padding: 2em 1em;
+  width: 64em;
+  background-color: #fff;
+}
+
+// 顶部
+.header {
+  background-color: @darkColor;
+
+  .container {
+    max-width: 75em;
+    margin: 0 auto;
+    padding: 0 1.5em;
+  }
+
+  .brand {
+    .inline-block();
+    color: @mainColor;
+    border: none;
+    padding: 1em 0 1em 3.5em;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    .icon-resume {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 2.5em;
+    }
+  }
+
+  .nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    li {
+      .inline-block();
+      &:hover {
+        background-color: lighten(@mainColor, 10%);
+      }
+    }
+
+    .qrcode {
+      img {
+        float: left;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .btn {
+      padding: 1.08em 1em;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.top {
+  position: relative;
+  padding: 1em 0;
+  .clearfix();
+
+  .avatar, .intro {
+    float: left;
+  }
+
+  .avatar {
+    //.qrcode{
+    //  padding-top:1em;
+    //  img{
+    //    width:135px;
+    //    height:135px;
+    //  }
+    //}
+    .hexagon {
+      background-image: url('../img/avatar.png');
+    }
+  }
+
+  .intro {
+    width: 65%;
+    padding-left: 2em;
+
+    .related-links {
+      padding: 0;
+      margin: 10px 0 0 0;
+      list-style: none;
+    }
+  }
+
+  .contract {
+    position: relative;
+    float: right;
+    width: 16%;
+    padding: 0 0 0 1em;
+    .inline-block();
+
+    .qrcode {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.section-project{
+  ol li{
+    margin-bottom:.2em;
+  }
+
+  .project{
+    margin-right:1.5em;
+  }
+}
+
+.section-education {
+  .date, .school {
+    margin-right: 1.5em;
+  }
+  .desc {
+    font-size: 0.85em;
+  }
+}
+
+.section-skills {
+
+  dl {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+
+    .inline-block();
+    width: 49%;
+    .clearfix();
+
+    dt {
+      width: 60%;
+      float: left;
+      line-height: 2em;
+      color: #999;
+    }
+    dd {
+      b, em {
+        .inline-block();
+        border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        margin: 0.6em 5px 0 0;
+      }
+
+      b {
+        background-color: #666;
+      }
+      em {
+        background-color: #ddd;
+      }
+    }
+  }
+}

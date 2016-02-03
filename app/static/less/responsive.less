@@ -1,0 +1,203 @@
+@screen-xs: 480px;
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1200px;
+@screen-xl: 1600px;
+
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+~"only screen and (min-device-pixel-ratio: 1.5)";
+@mobile: ~"only screen and (max-width: 529px)";
+@tablet: ~"only screen and (min-width: 530px) and (max-width: 949px)";
+@desktop: ~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl: ~"only screen and (min-width: 1129px)";
+
+.responsive(@maxWidth;@rules) {
+  @media (max-width: @maxWidth) { @rules();
+  }
+}
+
+@media (max-width: @screen-xs) {
+//@media @mobile {
+  .main {
+    min-width: 26.5em;
+    width: 100%;
+  }
+
+  //.header{
+  //  .btn-print{
+  //    display: none;
+  //  }
+  //}
+
+  .top {
+    .avatar, .contract, .intro {
+      float: none;
+      width: 100%;
+    }
+
+    .avatar {
+      margin: 0 auto;
+      padding: 0 32%;
+    }
+    .contract {
+      padding: 2em 0 0 2em;
+
+      .qrcode{
+        display: none;
+      }
+      p {
+        float: left;
+        width: 50%;
+      }
+    }
+
+    .intro {
+      padding: 0;
+      margin: 3em auto 0;
+    }
+  }
+
+  .timeline .timeline-entry .timeline-content{
+    padding-left:2em;
+  }
+
+  .section-skills dl dt {
+    width: 56%;
+  }
+}
+
+/*  */
+@media (min-width: @screen-xs)  and (max-width: (@screen-sm - 1)) {
+
+  .main {
+    min-width: 40em;
+    width: 100%;
+  }
+
+  .top {
+    .avatar {
+      width: 50%;
+      padding-right:5%;
+      .hexagon {
+        float: right;
+      }
+    }
+
+    .contract {
+      float: left;
+      padding-left:5%;
+      width: 50%;
+    }
+
+    .intro {
+      width: 100%;
+      padding: 1em 2em 0;
+    }
+  }
+
+}
+
+@media (min-width: @screen-sm) and (max-width: (@screen-md - 1) ) {
+//@media @desktop {
+  .main {
+    min-width: @screen-sm;
+    //width: 100%;
+  }
+
+  .top {
+    .intro {
+      width: 61%;
+    }
+    .contract {
+      width: 20%;
+    }
+  }
+}
+
+
+/* 大屏幕 */
+//@media (min-width: @screen-lg) {
+@media @desktop-xl {
+
+}
+
+
+
+
+
+/* 控制打印样式,以A4纸为基准 */
+@media print {
+  //处理页眉和页脚
+  //@see http://stackoverflow.com/questions/8228088/remove-header-and-footer-from-window-print
+  @page{
+    size: A4;
+    margin: 1cm;
+  }
+
+  //处理打印时的背景颜色等
+  //@see http://stackoverflow.com/questions/14987496/background-color-not-showing-in-print-preview
+  body {
+    -webkit-print-color-adjust: exact;
+    background-color:#fff;
+  }
+
+  .header {
+    display: none;
+  }
+
+  //可以节约纸张空间~
+  .main {
+    padding: 0;
+  }
+
+  .top {
+    padding:0;
+
+    .avatar,.intro{
+      float:left;
+    }
+    .avatar,.contract,.intro{
+      margin:0;
+      padding:0;
+    }
+    .avatar {
+      width: 10em !important;
+    }
+
+    .contract {
+      float: right;
+      width: 22%;
+      p{
+        float:none;
+        width:100%;
+      }
+
+      //打印的时候显示二维码以方便查看
+      .qrcode{
+        display: block;
+      }
+    }
+
+    .intro {
+      width: 55%;
+      padding: 0 0 0 2%;
+    }
+  }
+
+
+
+  .section-skills{
+    .section-bd{
+      padding:1em;
+    }
+    dl{
+      width:32.5%;
+
+      dt{
+        width:40%;
+      }
+    }
+  }
+}

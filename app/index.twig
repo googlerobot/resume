@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ pageTitle }}</title>
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!--<link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">-->
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="潘峰个人简历">
+  <link rel="stylesheet" href="static/css/base.css"/>
+  <link rel="stylesheet" href="static/css/responsive.css"/>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <a href="javascript:void(0);" class="brand"><i class="icon icon-resume"></i><span>&nbsp;</span></a>
+    <ul class="nav">
+      <li class="qrcode"><img src="static/img/qrcode.png"></li>
+      <li><a class="btn btn-download-pdf" href="resume.pdf" target="_blank" download="潘峰个人简历.pdf"><i
+            class="icon icon-download"></i>下载PDF版</a></li>
+      <li><a class="btn btn-print" href="javascript:window.print();"><i class="icon icon-print"></i>打印</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="main">
+  <div class="top">
+    <div class="avatar">
+      <div class="hexagon">
+        <div class="hexTop"></div>
+        <div class="hexBottom"></div>
+      </div>
+    </div>
+    <div class="contract">
+      <div class="qrcode"><img src="static/img/qrcode.png"></div>
+      <p><i class="icon icon-cn"></i>{{ name_cn }}</p>
+      <p><i class="icon icon-en"></i>{{ name_en }}</p>
+      <p><i class="icon icon-job"></i>{{ jobTitle }}</p>
+      <p><i class="icon icon-mobile"></i>{{ mobile }}</p>
+      <p><i class="icon icon-mail"></i>{{ mail }}</p>
+      <p><i class="icon icon-qq"></i>{{ qq }}</p>
+    </div>
+    <div class="intro">
+      {% for intro in introduces %}
+        <p>{{ intro }}</p>
+      {% endfor %}
+      <ul class="related-links">
+        {% for l in links %}
+          <li><i class="icon {{ l.icon }}"></i><a href="{{ l.link }}" rel="nofollow" target="_blank">{{ l.link }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="content clearfix">
+    <div class="section section-tech">
+      <div class="section-hd">
+        <h4><i class="icon {{ technologyStack.icon }}"></i>{{ technologyStack.title }}</h4>
+      </div>
+      <div class="section-bd">
+        {% for desc in technologyStack.description %}
+          <p>{{ desc }}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <div class="section section-works">
+      <div class="section-hd">
+        <h4><i class="icon {{ works.icon }}"></i>{{ works.title }}</h4>
+      </div>
+      <div class="section-bd">
+        <ul class="timeline">
+          {% for entry in works.list %}
+            <li class="timeline-entry">
+              <div class="timeline-stat"></div>
+              <div class="timeline-content">
+                <div class="timeline-hd">
+                  <strong>{{ entry.company }}</strong>
+                  <span class="job">{{ entry.job }}</span>
+                  <span class="date">{{ entry.date }}</span>
+                  <span class="summary">{{ entry.summary }}</span>
+                </div>
+                <div class="timeline-bd">
+                  {#<p>{{ entry.description }}</p>#}
+                  <ul>
+                    {% for item in entry.projects %}
+                      {% if item.content %}
+                        <li><span class="date">{{ item.date }}</span>{{ item.content }}</li>
+                      {% else %}
+                        <li>{{ item }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="section section-project">
+      <div class="section-hd">
+        <h4><i class="icon {{ projects.icon }}"></i>{{ projects.title }}</h4>
+      </div>
+      <div class="section-bd">
+        <ul>
+        {% for entry in projects.list %}
+          <li><strong class="project">{{ entry.name }}</strong>{{ entry.description }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="section section-education">
+      <div class="section-hd">
+        <h4><i class="icon icon-feature"></i>教育经历</h4>
+      </div>
+      <div class="section-bd">
+        <p>
+          <span class="date">2009.9 - 2013.7</span>
+          <span class="school">贵州大学 软件工程 本科</span>
+          <span class="desc">在校期间获国家励志奖学金、三等奖学金、三好学生、优秀班干部等.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer">
+    <p></p>
+  </div>
+</div>
+</body>
+</html>
