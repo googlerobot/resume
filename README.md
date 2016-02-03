@@ -13,8 +13,17 @@
 - [x] 简洁排版，支持响应式
 - [x] 提供打印、下载PDF按钮及二维码
 - [x] gulp自动构建
+- [x] 自动发布到pages
 - [ ] 自动生成pdf
 
+
+## 命令
+
+```
+gulp serve 预览
+gulp publish 发布到gh-pages分支
+
+```
 
 
 ## 感谢
