@@ -10,7 +10,6 @@
     "gulp-data": "^1.2.1",
     "gulp-flatten": "0.0.4",
     "gulp-gh-pages": "^0.5.4",
-    "gulp-html-pdf": "^0.2.0",
     "gulp-if": "^1.2.1",
     "gulp-less": "^3.0.5",
     "gulp-load-plugins": "^0.8.0",
